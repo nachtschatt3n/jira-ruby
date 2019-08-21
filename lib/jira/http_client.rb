@@ -44,6 +44,7 @@ module JIRA
     def http_conn(uri)
       if @options[:proxy_address]
         http_class = Net::HTTP::Proxy(@options[:proxy_address], @options[:proxy_port] || 80, @options[:proxy_user], @options[:proxy_pass])
+        http_class.set_debug_output $stderr
       else
         http_class = Net::HTTP
       end
